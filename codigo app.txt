@@ -1,0 +1,73 @@
+const {PrismaClient} = require ('@prisma/client')
+
+const prisma = new PrismaClient()
+
+async function main() {
+
+    //CODIGOS PARA EL CRUD A TRAVÉS DE CONSULTAS 
+
+    
+    //CREAR UN REGISTRO
+    /*const post = await prisma.proveedores.create({
+        data: {
+            Nombre: 'Camilo',
+            Apellido: 'Daza',
+        }
+    })
+    console.log(post)*/
+
+    
+    //CREAR VARIOS REGISTROS
+    /*const post = await prisma.proveedores.createMany({
+        data: [
+            {Nombre:'Alejandro', Apellido:'Daza'},
+            {Nombre:'Diana', Apellido:'Daza'},
+            {Nombre:'Viviana', Apellido:'Daza'},
+        ]
+    })
+    console.log(post)*/
+
+
+    //MOSTRAR TODOS LOS REGISTROS
+   /* const allpost= await prisma.proveedores.findMany ()
+        console.log(allpost)*/
+
+
+    //MOSTRAR UN SOLO REGISTRO
+    /*const post = await prisma.proveedores.findUnique ({
+        where :{
+            id:3
+        }
+    })
+    console.log(post)*/
+
+    
+    //ACTUALIZAR UN REGISTRO
+    /*const updatePost = await prisma.proveedores.update({
+        where:{
+            id:4
+        },
+        data :{
+            Nombre:'Registro 4 - Editado',
+            Apellido:'Contenido Editado'
+        }
+   })
+    console.log(updatePost)*/
+
+    //ELIMINAR UN REGISTRO
+    const deletePost = await prisma.proveedores.delete({
+        where: {
+            id:2
+        }
+    })
+    console.log(deletePost)
+
+
+}
+main()
+    .catch(  (e)=> {
+        throw e
+    })
+    .finally(async () => {
+        await prisma.$disconnect()
+    })
